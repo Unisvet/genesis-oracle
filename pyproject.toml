@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Physics simulation engine for exploring standard and dimensionless systems"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["numpy", "matplotlib", "scipy"]
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "keras>=3.0.7",
+    "jax>=0.10.0",
+    "jaxlib>=0.10.0",
+]
