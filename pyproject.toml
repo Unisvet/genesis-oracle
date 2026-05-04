@@ -1,7 +1,7 @@
 [project]
 name = "genesis-oracle"
 version = "0.1.0"
-description = "Add your description here"
+description = "Physics simulation engine for exploring standard and dimensionless systems"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = ["numpy", "matplotlib", "scipy"]
