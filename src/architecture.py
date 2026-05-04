@@ -2,7 +2,7 @@ import os
 import numpy as np
 import keras
 
-def prepare_sequence_data(signal, window_size=50, split_period=60):
+def prepare_sequence_data(signal, window_size=50, split_period=60, points_per_period=1000):
     """
     Slices a 1D signal into overlapping 2D matrices of shape (num_windows, window_size).
     Splits the data into training (before period 60) and testing sets.
@@ -13,8 +13,13 @@ def prepare_sequence_data(signal, window_size=50, split_period=60):
     windows = np.lib.stride_tricks.sliding_window_view(signal, window_size)
     
     # Split data: normal data before period 60 for training, rest for testing
-    train_data = windows[:split_period]
-    test_data = windows[split_period:]
+    split_idx = split_period * points_per_period
+    
+    # Ensure split_idx is within bounds
+    split_idx = min(split_idx, len(windows))
+    
+    train_data = windows[:split_idx]
+    test_data = windows[split_idx:]
     
     return train_data, test_data
 
